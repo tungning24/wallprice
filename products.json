@@ -2,26 +2,26 @@
   {
     "name":"โมจิ",
     "price":10,
-    "image":"images/mojii.jpg",
+    "image":"images/mochi.avif",
     "new":true
   },
   {
     "name":"Paddle Pop",
     "price":10,
-    "image":"images/paddlepop.jpg",
+    "image":"images/PaddlePop_Rain.avif",
     "new":false
   },
 {
   "name":"Ice Ball แตงโม",
   "price":15,
-  "image":"images/iceball.jpg",
+  "image":"images/Iceball_green.avif",
   "new":true
 },
 {
   "name":"Cornetto Classic",
   "price":20,
   "category":"Cornetto",
-  "image":"images/cornetto.jpg",
+  "image":"images/Cornetto_Vanilla.avif",
   "new":false
 }
 ]
