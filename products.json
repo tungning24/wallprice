@@ -1,0 +1,27 @@
+[
+  {
+    "name":"โมจิ",
+    "price":10,
+    "image":"images/mojii.jpg",
+    "new":true
+  },
+  {
+    "name":"Paddle Pop",
+    "price":10,
+    "image":"images/paddlepop.jpg",
+    "new":false
+  },
+{
+  "name":"Ice Ball แตงโม",
+  "price":15,
+  "image":"images/iceball.jpg",
+  "new":true
+},
+{
+  "name":"Cornetto Classic",
+  "price":20,
+  "category":"Cornetto",
+  "image":"images/cornetto.jpg",
+  "new":false
+}
+]

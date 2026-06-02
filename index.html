@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Wall's Menu</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:sans-serif;
+}
+
+body{
+background:#f4f4f4;
+}
+
+header{
+background:#d71920;
+color:white;
+padding:20px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.search{
+padding:15px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+font-size:16px;
+}
+
+.tabs{
+display:flex;
+gap:10px;
+overflow:auto;
+padding:0 15px 15px;
+}
+
+.tabs button{
+border:none;
+padding:10px 15px;
+border-radius:999px;
+background:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.tabs button.active{
+background:#d71920;
+color:white;
+}
+
+.products{
+padding:15px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.card{
+background:white;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.card img{
+width:100%;
+height:150px;
+object-fit:cover;
+}
+
+.info{
+padding:10px;
+}
+
+.name{
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.price{
+color:#d71920;
+font-size:18px;
+font-weight:bold;
+}
+
+.badge{
+display:inline-block;
+background:#7AC943;
+color:white;
+padding:4px 8px;
+border-radius:999px;
+font-size:12px;
+margin-bottom:5px;
+}
+
+</style>
+</head>
+<body>
+
+<header>🍦 Wall's Menu</header>
+
+<div class="search">
+<input id="search" placeholder="ค้นหาไอศกรีม">
+</div>
+
+<div class="tabs">
+<button class="active" data-filter="all">ทั้งหมด</button>
+<button data-filter="10">10 บาท</button>
+<button data-filter="15">15 บาท</button>
+<button data-filter="20">20 บาท</button>
+<button data-filter="new">สินค้าใหม่</button>
+</div>
+
+<div id="products" class="products"></div>
+
+<script>
+
+let allProducts=[];
+
+async function loadProducts(){
+
+const res=await fetch('products.json');
+allProducts=await res.json();
+
+renderProducts(allProducts);
+
+}
+
+function renderProducts(data){
+
+const box=document.getElementById('products');
+
+box.innerHTML='';
+
+data.forEach(item=>{
+
+box.innerHTML+=`
+<div class="card">
+
+<img src="${item.image}">
+
+<div class="info">
+
+${item.new ? '<div class="badge">ใหม่</div>' : ''}
+
+<div class="name">${item.name}</div>
+
+<div class="price">${item.price} บาท</div>
+
+</div>
+
+</div>
+`;
+
+});
+
+}
+
+document.querySelectorAll('.tabs button').forEach(btn=>{
+
+btn.onclick=()=>{
+
+document
+.querySelectorAll('.tabs button')
+.forEach(x=>x.classList.remove('active'));
+
+btn.classList.add('active');
+
+const filter=btn.dataset.filter;
+
+if(filter==="all"){
+renderProducts(allProducts);
+return;
+}
+
+if(filter==="new"){
+renderProducts(
+allProducts.filter(x=>x.new)
+);
+return;
+}
+
+renderProducts(
+allProducts.filter(
+x=>x.price==filter
+)
+);
+
+};
+
+});
+
+document
+.getElementById('search')
+.addEventListener('input',e=>{
+
+const text=e.target.value.toLowerCase();
+
+renderProducts(
+
+allProducts.filter(item=>
+
+item.name
+.toLowerCase()
+.includes(text)
+
+)
+
+);
+
+});
+
+loadProducts();
+
+</script>
+
+</body>
+</html>
