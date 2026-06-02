@@ -2,7 +2,7 @@
   {
     "name":"โมจิ",
     "price":10,
-    "image":"images/mochi.avif",
+    "image":"images/Mochi.avif",
     "new":true
   },
   {
@@ -14,7 +14,7 @@
 {
   "name":"Ice Ball แตงโม",
   "price":15,
-  "image":"images/Iceball_red.jpg",
+  "image":"images/iceball_red.jpg",
   "new":true
 },
 {
