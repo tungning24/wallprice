@@ -212,30 +212,7 @@ document
 
 const text=e.target.value.toLowerCase();
 
-renderProducts(
 
-allProducts.filter(item=>{
-
-const searchText = text.toLowerCase();
-
-const nameMatch =
-item.name
-.toLowerCase()
-.includes(searchText);
-
-const keywordMatch =
-(item.keywords || [])
-.some(keyword =>
-keyword
-.toLowerCase()
-.includes(searchText)
-);
-
-return nameMatch || keywordMatch;
-
-});
-
-);
 
 });
 
