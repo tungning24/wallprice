@@ -3,6 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#de2727">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<link rel="icon" href="icon-192x192.png">
+
+<link rel="apple-touch-icon" href="icon-192x192.png">
 
 <title>Wall's Menu</title>
 
@@ -112,7 +125,25 @@ margin-bottom:5px;
 </style>
 </head>
 <body>
+<script>
 
+if ('serviceWorker' in navigator) {
+
+  window.addEventListener('load', () => {
+
+    navigator.serviceWorker
+      .register('./sw.js')
+      .then(() => {
+
+        console.log('SW Registered');
+
+      });
+
+  });
+
+}
+
+</script>
 <header>🍦 Wall's Menu</header>
 
 <div class="search">
@@ -224,3 +255,17 @@ loadProducts();
 
 </body>
 </html>
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#d71920">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<link rel="icon" href="icons/icon-192.png">
+
+<link rel="apple-touch-icon" href="icons/icon-192.png">
