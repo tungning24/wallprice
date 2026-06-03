@@ -243,9 +243,28 @@ document
 .getElementById('search')
 .addEventListener('input',e=>{
 
-const text=e.target.value.toLowerCase();
+const text = e.target.value.toLowerCase();
 
+renderProducts(
 
+allProducts.filter(item=>{
+
+const nameMatch =
+(item.name || '')
+.toLowerCase()
+.includes(text);
+
+const keywordMatch =
+(item.keywords || [])
+.some(keyword =>
+keyword.toLowerCase().includes(text)
+);
+
+return nameMatch || keywordMatch;
+
+})
+
+);
 
 });
 
@@ -255,17 +274,3 @@ loadProducts();
 
 </body>
 </html>
-
-<link rel="manifest" href="manifest.json">
-
-<meta name="theme-color" content="#d71920">
-
-<meta name="mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-<link rel="icon" href="icons/icon-192.png">
-
-<link rel="apple-touch-icon" href="icons/icon-192.png">
