@@ -1,18 +1,5 @@
 [
 	{
-	  "name":"แพดเดิลป๊อป บิ๊กร๊อกเก็ต สตรอ",
-	  "price":10,
-	  "new":false,
-	  "keywords":[
-		"paddlepop",
-		"rocket",
-		"แพดเดิลป๊อป",
-		"บิ๊กร๊อกเก็ต",
-		"จรวด"
-	  ],
-	  "image":"images/paddlepop_bigrocket.avif"
-	},
-	{
 	  "name":"วอลล์ โคล่า",
 	  "price":5,
 	  "new":false,
@@ -35,6 +22,19 @@
 		"ฟรุตตี้"
 	  ],
 	  "image":"images/wall_fruity.avif"
+	},
+	{
+	  "name":"แพดเดิลป๊อป บิ๊กร๊อกเก็ต สตรอ",
+	  "price":10,
+	  "new":false,
+	  "keywords":[
+		"paddlepop",
+		"rocket",
+		"แพดเดิลป๊อป",
+		"บิ๊กร๊อกเก็ต",
+		"จรวด"
+	  ],
+	  "image":"images/paddlepop_bigrocket.avif"
 	},
 	{
 	  "name":"แพดเดิลป๊อป เรนโบว์",
