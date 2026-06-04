@@ -169,7 +169,9 @@ let allProducts=[];
 
 async function loadProducts(){
 
-const res=await fetch('products.json');
+const res = await fetch(
+      `products.json?t=${Date.now()}`
+  );
 allProducts=await res.json();
 
 renderProducts(allProducts);
