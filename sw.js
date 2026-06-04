@@ -2,8 +2,7 @@ const CACHE_NAME = 'walls-v1';
 
 const FILES = [
   './',
-  './index.html',
-  './products.json'
+  './index.html'
 ];
 
 self.addEventListener('install', event => {
