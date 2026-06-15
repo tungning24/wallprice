@@ -171,6 +171,18 @@
 	  "image":"images/paddlepop_lava.avif"
 	},
 	{
+	  "name":"วอลล์ มินิ ฟุตบอล",
+	  "price":10,
+	  "new":true,
+	  "keywords":[
+		"วอลล์",
+		"ฟุตบอล",
+		"wall",
+		"footbal"
+	  ],
+	  "image":"images/mini_football.avif"
+	},
+	{
 	  "name":"วอลล์ ไอซ์บอล แตงโม",
 	  "price":15,
 	  "new":true,
