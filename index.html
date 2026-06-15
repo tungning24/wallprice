@@ -160,7 +160,9 @@ if ('serviceWorker' in navigator) {
 <button data-filter="35">35 บาท</button>
 <button data-filter="new">สินค้าใหม่</button>
 </div>
-
+<div id="loading" style="text-align:center;padding:20px">
+⏳ กำลังโหลดเมนู...
+</div>
 <div id="products" class="products"></div>
 
 <script>
@@ -184,7 +186,7 @@ async function loadProducts(){
       : [],
     image: row.image
   }));
-
+document.getElementById('loading').style.display = 'none';
 renderProducts(allProducts);
 
 }
