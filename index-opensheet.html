@@ -169,14 +169,19 @@ if ('serviceWorker' in navigator) {
 
 let allProducts=[];
 
+function sortByPriceAsc(data){
+
+  return [...data].sort((a,b)=>Number(a.price)-Number(b.price));
+
+}
+
 async function loadProducts(){
 
   const res = await fetch(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0chTVpQ-RlhWQDTXsyCsS_A6XQAbli8JBk9DkhfSQEGA8bdK-Z1BI9xZq8ejzborJFUQ77faB4URK/pub?output=csv"
+    "https://opensheet.elk.sh/1DC2okvELPYlElCK6-hmjYQyJogra5Mo9ccVG58mOpRo/wall_products"
   );
 
-  const csv = await res.text();
-  const rows = csvToRows(csv);
+  const rows = await res.json();
 
   allProducts = rows.map(row => ({
     name: row.name,
@@ -188,44 +193,7 @@ async function loadProducts(){
     image: row.image
   }));
 document.getElementById('loading').style.display = 'none';
-renderProducts(allProducts);
-
-}
-
-function csvToRows(csv){
-
-  const lines = csv.trim().split(/\r?\n/).map(parseCsvLine);
-
-  const headers = lines.shift();
-
-  return lines.map(line =>
-    Object.fromEntries(headers.map((header, i) => [header, line[i] || '']))
-  );
-
-}
-
-function parseCsvLine(line){
-
-  const cells = [''];
-  let quoted = false;
-
-  for (let i = 0; i < line.length; i++) {
-    const char = line[i];
-    const next = line[i + 1];
-
-    if (char === '"' && quoted && next === '"') {
-      cells[cells.length - 1] += '"';
-      i++;
-    } else if (char === '"') {
-      quoted = !quoted;
-    } else if (char === ',' && !quoted) {
-      cells.push('');
-    } else {
-      cells[cells.length - 1] += char;
-    }
-  }
-
-  return cells.map(cell => cell.trim());
+renderProducts(sortByPriceAsc(allProducts));
 
 }
 
@@ -266,7 +234,7 @@ btn.classList.add('active');
 const filter=btn.dataset.filter;
 
 if(filter==="all"){
-renderProducts(allProducts);
+renderProducts(sortByPriceAsc(allProducts));
 return;
 }
 
